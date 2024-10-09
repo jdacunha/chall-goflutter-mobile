@@ -44,6 +44,7 @@ class AppRouter {
         OrganisateurRouter.routes,
         TeneurStandRouter.routes,
         ParentRouter.routes,
+        EnfantRouter.routes,
       ],
     );
   }
@@ -57,7 +58,7 @@ class AppRouter {
       case "PARENT":
         return ParentRoutes.userDetails;
       case "ENFANT":
-        return OrganisateurRoutes.kermesseList;
+        return EnfantRoutes.userDetails;
       default:
         return AuthRoutes.login;
     }

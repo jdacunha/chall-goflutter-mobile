@@ -96,7 +96,6 @@ class _KermesseDetailsScreenState extends State<KermesseDetailsScreen> {
                   _buildKermesseDetail("Description", data.description),
                   _buildKermesseDetail("Statut", _translateStatus(data.statut)),
                   const SizedBox(height: 16),
-                  _buildNavigationButton("Dashboard", TeneurStandRoutes.kermesseDashboard, data.id),
                   _buildNavigationButton("Interactions", TeneurStandRoutes.kermesseInteractionList, data.id),
                 ],
               );

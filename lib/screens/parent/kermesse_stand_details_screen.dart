@@ -26,7 +26,7 @@ class _KermesseStandDetailsScreenState
     extends State<KermesseStandDetailsScreen> {
   final StandService _standService = StandService();
   final InteractionService _interactionService = InteractionService();
-  final TextEditingController _quantityController = TextEditingController();
+  final TextEditingController _quantityController = TextEditingController(text: "1");
 
   Future<StandDetailsResponse> _fetchStandDetails() async {
     final response = await _standService.details(standId: widget.standId);
@@ -51,50 +51,52 @@ class _KermesseStandDetailsScreenState
   @override
   Widget build(BuildContext context) {
     return Screen(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 16.0, bottom: 8.0),
-            child: Text(
-              "Détails du stand",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-          ),
-          Expanded(
-            child: DetailsFutureBuilder<StandDetailsResponse>(
-              future: _fetchStandDetails,
-              builder: (context, data) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Nom: ${data.name}"),
-                    Text("Description: ${data.description}"),
-                    Text("Type: ${data.type}"),
-                    Text("Prix: ${data.price} €"),
-                    if (data.type == "VENTE")
-                      Text("Stock: ${data.stock}"),
-                    const SizedBox(height: 16),
-                    if (data.type != "ACTIVITE")
-                      NumberInput(
-                        controller: _quantityController,
-                        hintText: "Quantité",
-                        defaultValue: "1",
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Détails du stand",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 16),
+              DetailsFutureBuilder<StandDetailsResponse>(
+                future: _fetchStandDetails,
+                builder: (context, data) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Nom: ${data.name}"),
+                      Text("Description: ${data.description}"),
+                      Text("Type: ${data.type}"),
+                      Text("Prix: ${data.price} €"),
+                      if (data.type == "VENTE")
+                        Text("Stock: ${data.stock}"),
+                      const SizedBox(height: 16),
+                      if (data.type != "ACTIVITE")
+                        NumberInput(
+                          controller: _quantityController,
+                          hintText: "Quantité",
+                          defaultValue: "1",
+                        ),
+                      const SizedBox(height: 16),
+                      ElevatedButton(
+                        onPressed: _participate,
+                        child: const Text("Participer"),
                       ),
-                    const SizedBox(height: 16),
-                    ElevatedButton(
-                      onPressed: _participate,
-                      child: const Text("Participer"),
-                    ),
-                  ],
-                );
-              },
-            ),
+                    ],
+                  );
+                },
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
+
 
   @override
   void dispose() {

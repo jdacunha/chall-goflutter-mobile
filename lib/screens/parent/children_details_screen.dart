@@ -72,7 +72,6 @@ class _ChildrenDetailsScreenState extends State<ChildrenDetailsScreen> {
                 children: [
                   Text(data.name),
                   Text(data.email),
-                  Text(data.role),
                   Text(data.jetons.toString()),
                   NumberInput(
                     hintText: "Montant",

@@ -111,19 +111,6 @@ class ParentRouter {
               );
             },
           ),
-          /*
-          GoRoute(
-            path: ParentRoutes.kermesseDashboard,
-            pageBuilder: (context, state) {
-              final params =
-              GoRouterState.of(context).extra as Map<String, int>;
-              return NoTransitionPage(
-                child: KermesseDashboardScreen(
-                  kermesseId: params['kermesseId']!,
-                ),
-              );
-            },
-          ), */
           GoRoute(
             path: ParentRoutes.kermesseUserList,
             pageBuilder: (context, state) {

@@ -17,7 +17,6 @@ import 'package:chall_mobile/screens/enfant/user_details_screen.dart';
 import 'package:chall_mobile/screens/enfant/user_edit_screen.dart';
 import 'package:provider/provider.dart';
 
-import '../screens/parent/user_details_screen.dart';
 import 'enfant_bottom_navigation.dart';
 
 class EnfantRoutes {

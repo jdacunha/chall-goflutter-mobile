@@ -37,37 +37,39 @@ class _KermesseInteractionDetailsScreenState
   @override
   Widget build(BuildContext context) {
     return Screen(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 16.0),
-            child: Text(
-              "Détails de l'interaction",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Détails de l'interaction",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 16),
+              DetailsFutureBuilder<InteractionDetailsResponse>(
+                future: _fetchInteractionDetails,
+                builder: (context, data) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildDetailRow("Kermesse:", data.kermesse.name),
+                      _buildDetailRow("Stand:", data.stand.name),
+                      _buildDetailRow("Type:", data.type),
+                      _buildDetailRow("Participant:", data.user.name),
+                      _buildDetailRow("Jetons:", data.jetons.toString()),
+                    ],
+                  );
+                },
+              ),
+            ],
           ),
-          Expanded(
-            child: DetailsFutureBuilder<InteractionDetailsResponse>(
-              future: _fetchInteractionDetails,
-              builder: (context, data) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildDetailRow("Kermesse:", data.kermesse.name),
-                    _buildDetailRow("Stand:", data.stand.name),
-                    _buildDetailRow("Type:", data.type),
-                    _buildDetailRow("Participant:", data.user.name),
-                    _buildDetailRow("Jetons:", data.jetons.toString()),
-                  ],
-                );
-              },
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
+
 
   Widget _buildDetailRow(String label, String value) {
     return Padding(

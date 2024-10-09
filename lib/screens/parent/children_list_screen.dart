@@ -36,6 +36,7 @@ class _ChildrenListScreenState extends State<ChildrenListScreen> {
         children: [
           const Text(
             "Mes enfants",
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           ElevatedButton(
             onPressed: () {
@@ -51,7 +52,7 @@ class _ChildrenListScreenState extends State<ChildrenListScreen> {
               builder: (context, item) {
                 return ListTile(
                   title: Text(item.name),
-                  subtitle: Text(item.role),
+                  subtitle: Text(item.email),
                   onTap: () {
                     context.push(
                       ParentRoutes.childrenDetails,

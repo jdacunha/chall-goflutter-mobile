@@ -25,9 +25,9 @@ class TeneurStandRoutes {
   static const String kermesseDetails = '/teneur-stand/kermesse-details';
   static const String kermesseDashboard = '/teneur-stand/kermesse-dashboard';
   static const String kermesseInteractionList =
-      '/parent/kermesse-interaction-list';
+      '/teneur-stand/kermesse-interaction-list';
   static const String kermesseInteractionDetails =
-      '/parent/kermesse-interaction-details';
+      '/teneur-stand/kermesse-interaction-details';
   static const String standDetails = '/teneur-stand/stand-details';
   static const String standEdit = '/teneur-stand/stand-edit';
   static const String standCreate = '/teneur-stand/stand-create';
@@ -88,19 +88,6 @@ class TeneurStandRouter {
               );
             },
           ),
-          /*
-          GoRoute(
-            path: TeneurStandRoutes.kermesseDashboard,
-            pageBuilder: (context, state) {
-              final params =
-              GoRouterState.of(context).extra as Map<String, int>;
-              return NoTransitionPage(
-                child: KermesseDashboardScreen(
-                  kermesseId: params['kermesseId']!,
-                ),
-              );
-            },
-          ), */
           GoRoute(
             path: TeneurStandRoutes.kermesseInteractionList,
             pageBuilder: (context, state) {

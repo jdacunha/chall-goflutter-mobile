@@ -84,11 +84,6 @@ class _KermesseDetailsScreenState extends State<KermesseDetailsScreen> {
                   const SizedBox(height: 16),
                   if (data.statut == "STARTED") _buildActionButtons(data),
                   _buildNavigationButton(
-                    "Dashboard",
-                    OrganisateurRoutes.kermesseDashboard,
-                    data.id,
-                  ),
-                  _buildNavigationButton(
                     "Participants",
                     OrganisateurRoutes.kermesseUserList,
                     data.id,

@@ -37,7 +37,7 @@ class _KermesseUserListScreenState extends State<KermesseUserListScreen> {
           const Padding(
             padding: EdgeInsets.only(top: 16.0, bottom: 8.0),
             child: Text(
-              "Liste des utilisateurs",
+              "Participants",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ),

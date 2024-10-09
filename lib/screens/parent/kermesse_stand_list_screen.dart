@@ -41,6 +41,7 @@ class _KermesseStandListScreenState extends State<KermesseStandListScreen> {
         children: [
           const Text(
             "Liste des stands",
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           Expanded(
             child: ListFutureBuilder<StandListItem>(

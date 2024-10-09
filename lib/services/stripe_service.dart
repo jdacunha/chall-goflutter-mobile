@@ -21,7 +21,7 @@ class StripeService {
     final response = await http.post(
       url,
       headers: {
-        "Authorization": "Bearer ${ApiConstants.stripeScretKey}",
+        "Authorization": "Bearer ${ApiConstants.stripeSecretKey}",
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body:

@@ -37,7 +37,7 @@ class _KermesseDetailsScreenState extends State<KermesseDetailsScreen> {
       case "STARTED":
         return "En cours";
       case "ENDED":
-        return "Terminé";
+        return "Terminée";
       default:
         return status;
     }
@@ -60,20 +60,10 @@ class _KermesseDetailsScreenState extends State<KermesseDetailsScreen> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("ID: ${data.id}"),
                   Text("Nom: ${data.name}"),
                   Text("Description: ${data.description}"),
                   Text("Statut: ${_getKermesseStatus(data.statut)}"),
                   const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () {
-                      context.push(
-                        ParentRoutes.kermesseDashboard,
-                        extra: {"kermesseId": data.id},
-                      );
-                    },
-                    child: const Text("Dashboard"),
-                  ),
                   ElevatedButton(
                     onPressed: () {
                       context.push(

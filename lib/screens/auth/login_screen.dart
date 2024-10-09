@@ -1,3 +1,4 @@
+import 'package:chall_mobile/router/enfant_routes.dart';
 import 'package:chall_mobile/router/parent_routes.dart';
 import 'package:chall_mobile/router/teneur_stand_routes.dart';
 import 'package:flutter/material.dart';
@@ -76,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
         context.go(ParentRoutes.userDetails);
         break;
       case "ENFANT":
-        context.go(OrganisateurRoutes.kermesseList);
+        context.go(EnfantRoutes.userDetails);
         break;
     }
   }

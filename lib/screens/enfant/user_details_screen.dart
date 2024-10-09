@@ -8,19 +8,19 @@ import 'package:chall_mobile/widgets/details_future_builder.dart';
 import 'package:chall_mobile/widgets/screen.dart';
 import 'package:chall_mobile/widgets/sign_out_button.dart';
 
-class ProfileScreen extends StatefulWidget {
+class UserDetailsScreen extends StatefulWidget {
   final int userId;
 
-  const ProfileScreen({
+  const UserDetailsScreen({
     super.key,
     required this.userId,
   });
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<UserDetailsScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfileScreenState extends State<UserDetailsScreen> {
   final UserService _userService = UserService();
 
   Future<UserDetailsResponse> _fetchUserDetails() async {

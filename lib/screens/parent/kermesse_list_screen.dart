@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:chall_mobile/api/api_response.dart';
 import 'package:chall_mobile/data/kermesse_list_response.dart';
-import 'package:chall_mobile/router/teneur_stand_routes.dart';
+import 'package:chall_mobile/router/parent_routes.dart';
 import 'package:chall_mobile/services/kermesse_service.dart';
 import 'package:chall_mobile/widgets/list_future_builder.dart';
 import 'package:chall_mobile/widgets/screen_list.dart';
@@ -27,7 +27,7 @@ class _KermesseListScreenState extends State<KermesseListScreen> {
 
   void _navigateToKermesseDetails(int kermesseId) {
     context.push(
-      TeneurStandRoutes.kermesseDetails,
+      ParentRoutes.kermesseDetails,
       extra: {"kermesseId": kermesseId},
     );
   }
