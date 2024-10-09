@@ -41,6 +41,9 @@ class _KermesseTombolaDetailsScreenState
 
     final message = response.error ?? 'Tombola terminée avec succès';
     _showSnackBar(message, isError: response.error != null);
+    if (response.error == null) {
+      context.pop();
+    }
   }
 
   void _showSnackBar(String message, {bool isError = false}) {
@@ -60,6 +63,17 @@ class _KermesseTombolaDetailsScreenState
         "tombolaId": widget.tombolaId,
       },
     );
+  }
+
+  String _translateStatus(String status) {
+    switch (status) {
+      case 'STARTED':
+        return 'En cours';
+      case 'ENDED':
+        return 'Terminée';
+      default:
+        return status;
+    }
   }
 
   @override
@@ -82,7 +96,7 @@ class _KermesseTombolaDetailsScreenState
                   Text("Nom: ${data.name}"),
                   Text("Price: ${data.price}"),
                   Text("Lot: ${data.lot}"),
-                  Text("Statut: ${data.statut}"),
+                  Text("Statut: ${_translateStatus(data.statut)}"),
                   const SizedBox(height: 16),
                   if (data.statut == "STARTED")
                     Column(

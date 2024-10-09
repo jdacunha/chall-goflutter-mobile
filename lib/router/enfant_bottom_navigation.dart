@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class OrganisateurBottomNavigation extends StatelessWidget {
+class EnfantBottomNavigation extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
 
-  const OrganisateurBottomNavigation({
+  const EnfantBottomNavigation({
     super.key,
     required this.navigationShell,
   });

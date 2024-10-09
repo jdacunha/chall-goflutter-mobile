@@ -19,7 +19,7 @@ class ApiService {
       };
 
       http.Response response = await http.get(
-        Uri.http(ApiConstants.apiBaseUrl, url, queryParams),
+        Uri.https(ApiConstants.apiBaseUrl, url, queryParams),
         headers: headers,
       );
 
@@ -50,7 +50,7 @@ class ApiService {
       };
 
       http.Response response = await http.post(
-        Uri.http(ApiConstants.apiBaseUrl, url),
+        Uri.https(ApiConstants.apiBaseUrl, url),
         headers: headers,
         body: body,
       );
@@ -85,7 +85,7 @@ class ApiService {
       };
 
       http.Response response = await http.patch(
-        Uri.http(ApiConstants.apiBaseUrl, url),
+        Uri.https(ApiConstants.apiBaseUrl, url),
         headers: headers,
         body: body,
       );
@@ -119,7 +119,7 @@ class ApiService {
       };
 
       http.Response response = await http.delete(
-        Uri.http(ApiConstants.apiBaseUrl, url),
+        Uri.https(ApiConstants.apiBaseUrl, url),
         headers: headers,
       );
 

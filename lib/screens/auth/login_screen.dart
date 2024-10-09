@@ -1,3 +1,5 @@
+import 'package:chall_mobile/router/parent_routes.dart';
+import 'package:chall_mobile/router/teneur_stand_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -26,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> _submit() async {
     if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
-      _showErrorSnackBar('Veillez remplir les deux champs');
+      _showErrorSnackBar('Veuillez remplir les deux champs');
       return;
     }
 
@@ -47,7 +49,6 @@ class _LoginScreenState extends State<LoginScreen> {
       _showErrorSnackBar(response.error!);
     } else if (response.data != null) {
       await _saveTokenAndUserData(response.data!);
-      context.go(OrganisateurRoutes.accueil);
       _showSuccessSnackBar('Connexion réussie');
     }
   }
@@ -63,6 +64,21 @@ class _LoginScreenState extends State<LoginScreen> {
       data.role,
       data.hasStand,
     );
+
+    switch (data.role) {
+      case "ORGANISATEUR":
+        context.go(OrganisateurRoutes.profile);
+        break;
+      case "TENEUR_STAND":
+        context.go(TeneurStandRoutes.userDetails);
+        break;
+      case "PARENT":
+        context.go(ParentRoutes.userDetails);
+        break;
+      case "ENFANT":
+        context.go(OrganisateurRoutes.kermesseList);
+        break;
+    }
   }
 
   void _showErrorSnackBar(String message) {

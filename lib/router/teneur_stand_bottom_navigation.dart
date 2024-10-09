@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class OrganisateurBottomNavigation extends StatelessWidget {
+class TeneurStandBottomNavigation extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
 
-  const OrganisateurBottomNavigation({
+  const TeneurStandBottomNavigation({
     super.key,
     required this.navigationShell,
   });
@@ -50,8 +50,8 @@ class OrganisateurBottomNavigation extends StatelessWidget {
         label: 'Kermesses',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.local_activity),
-        label: 'Tickets',
+        icon: Icon(Icons.dns),
+        label: 'Stand',
       ),
     ];
   }

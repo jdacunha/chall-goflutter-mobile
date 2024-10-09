@@ -62,16 +62,6 @@ class OrganisateurRouter {
       StatefulShellBranch(
         routes: [
           GoRoute(
-            path: OrganisateurRoutes.accueil,
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: AccueilScreen(),
-            ),
-          ),
-        ],
-      ),
-      StatefulShellBranch(
-        routes: [
-          GoRoute(
             path: OrganisateurRoutes.profile,
             pageBuilder: (context, state) {
               AuthUser user =

@@ -13,7 +13,7 @@ class _AccueilScreenState extends State<AccueilScreen> {
     return const Scaffold(
       body: SafeArea(
         child: Text(
-          'Accueil Teneur de Stand',
+          'Accueil Parent',
         ),
       ),
     );

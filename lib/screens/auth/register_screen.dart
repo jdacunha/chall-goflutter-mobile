@@ -11,7 +11,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final _roleController = TextEditingController();
+  String _selectedRole = "ORGANISATEUR";
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -29,7 +29,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     });
 
     final response = await _authService.register(
-      role: _roleController.text.trim(),
+      role: _selectedRole.trim(),
       name: _nameController.text.trim(),
       email: _emailController.text.trim(),
       password: _passwordController.text.trim(),
@@ -48,7 +48,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   bool _isAnyFieldEmpty() {
-    return _roleController.text.isEmpty ||
+    return _selectedRole.isEmpty ||
         _nameController.text.isEmpty ||
         _emailController.text.isEmpty ||
         _passwordController.text.isEmpty;
@@ -74,7 +74,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 style: TextStyle(fontSize: 24),
               ),
               const SizedBox(height: 16),
-              _buildTextField(_roleController, 'Role'),
+              _buildRoleSelect(),
               const SizedBox(height: 16),
               _buildTextField(_nameController, 'Nom'),
               const SizedBox(height: 16),
@@ -102,6 +102,35 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
+  Widget _buildRoleSelect() {
+    return DropdownButtonFormField<String>(
+      value: _selectedRole,
+      onChanged: (String? newValue) {
+        setState(() {
+          _selectedRole = newValue!;
+        });
+      },
+      items: const [
+        DropdownMenuItem(
+          value: 'ORGANISATEUR',
+          child: Text('Organisateur'),
+        ),
+        DropdownMenuItem(
+          value: 'TENEUR_STAND',
+          child: Text('Teneur de Stand'),
+        ),
+        DropdownMenuItem(
+          value: 'PARENT',
+          child: Text('Parent'),
+        ),
+      ],
+      decoration: const InputDecoration(
+        labelText: 'Rôle',
+        border: OutlineInputBorder(),
+      ),
+    );
+  }
+
   Widget _buildTextField(
       TextEditingController controller,
       String hintText, {
@@ -119,7 +148,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   void dispose() {
-    _roleController.dispose();
     _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();

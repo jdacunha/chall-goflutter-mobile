@@ -41,6 +41,17 @@ class _KermesseDetailsScreenState extends State<KermesseDetailsScreen> {
     }
   }
 
+  String _translateStatus(String status) {
+    switch (status) {
+      case 'STARTED':
+        return 'En cours';
+      case 'ENDED':
+        return 'Terminée';
+      default:
+        return status;
+    }
+  }
+
   void _showSnackBar(String message, {bool isError = false}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -69,7 +80,7 @@ class _KermesseDetailsScreenState extends State<KermesseDetailsScreen> {
                 children: [
                   _buildKermesseDetail("Nom", data.name),
                   _buildKermesseDetail("Description", data.description),
-                  _buildKermesseDetail("Statut", data.statut),
+                  _buildKermesseDetail("Statut", _translateStatus(data.statut)),
                   const SizedBox(height: 16),
                   if (data.statut == "STARTED") _buildActionButtons(data),
                   _buildNavigationButton(

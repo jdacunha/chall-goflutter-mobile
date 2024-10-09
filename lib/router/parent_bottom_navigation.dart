@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class OrganisateurBottomNavigation extends StatelessWidget {
+class ParentBottomNavigation extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
 
-  const OrganisateurBottomNavigation({
+  const ParentBottomNavigation({
     super.key,
     required this.navigationShell,
   });
@@ -48,6 +48,10 @@ class OrganisateurBottomNavigation extends StatelessWidget {
       BottomNavigationBarItem(
         icon: Icon(Icons.celebration),
         label: 'Kermesses',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.supervisor_account),
+        label: 'Children',
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.local_activity),
