@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> _submit() async {
     if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
-      _showErrorSnackBar('Please fill in all fields');
+      _showErrorSnackBar('Veillez remplir les deux champs');
       return;
     }
 
@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
     } else if (response.data != null) {
       await _saveTokenAndUserData(response.data!);
       context.go(OrganisateurRoutes.accueil);
-      _showSuccessSnackBar('Sign in successful');
+      _showSuccessSnackBar('Connexion réussie');
     }
   }
 
@@ -86,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('Sign In', style: TextStyle(fontSize: 24)),
+              const Text('Se connecter', style: TextStyle(fontSize: 24)),
               const SizedBox(height: 16),
               TextField(
                 controller: _emailController,
@@ -100,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: _passwordController,
                 obscureText: true,
                 decoration: const InputDecoration(
-                  labelText: 'Password',
+                  labelText: 'Mot de passe',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -109,14 +109,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   ? const CircularProgressIndicator()
                   : ElevatedButton(
                 onPressed: _submit,
-                child: const Text('Sign In'),
+                child: const Text('Se connecter'),
               ),
               const SizedBox(height: 16),
               TextButton(
                 onPressed: () {
                   context.push(AuthRoutes.register);
                 },
-                child: const Text('Sign Up'),
+                child: const Text('Créer un compte'),
               ),
             ],
           ),

@@ -14,10 +14,22 @@ class OrganisateurBottomNavigation extends StatelessWidget {
     navigationShell.goBranch(index, initialLocation: isInitialLocation);
   }
 
+  Future<void> _refreshData() async {
+    await Future.delayed(const Duration(milliseconds: 1));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: navigationShell,
+      body: FutureBuilder<void>(
+        future: _refreshData(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return navigationShell;
+          }
+          return Container();
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: navigationShell.currentIndex,
@@ -35,7 +47,15 @@ class OrganisateurBottomNavigation extends StatelessWidget {
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.person),
-        label: 'Profile',
+        label: 'Profil',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.celebration),
+        label: 'Kermesses',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.local_activity),
+        label: 'Tickets',
       ),
     ];
   }

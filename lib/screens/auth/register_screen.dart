@@ -20,7 +20,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   Future<void> _submit() async {
     if (_isAnyFieldEmpty()) {
-      _showSnackBar('Please fill in all fields');
+      _showSnackBar('Veillez remplir tous les champs');
       return;
     }
 
@@ -43,7 +43,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       _showSnackBar(response.error!);
     } else {
       context.pop();
-      _showSnackBar('Sign up successful');
+      _showSnackBar('Inscription réussie');
     }
   }
 
@@ -70,30 +70,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Sign Up',
+                'Inscription',
                 style: TextStyle(fontSize: 24),
               ),
               const SizedBox(height: 16),
               _buildTextField(_roleController, 'Role'),
               const SizedBox(height: 16),
-              _buildTextField(_nameController, 'Name'),
+              _buildTextField(_nameController, 'Nom'),
               const SizedBox(height: 16),
               _buildTextField(_emailController, 'Email'),
               const SizedBox(height: 16),
-              _buildTextField(_passwordController, 'Password', obscureText: true),
+              _buildTextField(_passwordController, 'Mot de passe', obscureText: true),
               const SizedBox(height: 24),
               _isLoading
                   ? const CircularProgressIndicator()
                   : ElevatedButton(
                 onPressed: _submit,
-                child: const Text('Sign Up'),
+                child: const Text('S\'inscrire'),
               ),
               const SizedBox(height: 16),
               TextButton(
                 onPressed: () {
                   context.pop();
                 },
-                child: const Text('Sign In'),
+                child: const Text('Se connecter'),
               ),
             ],
           ),
